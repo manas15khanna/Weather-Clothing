@@ -66,12 +66,13 @@ def get_outfit_suggestion(temp, conditions):
     - DO NOT EXPLAIN 
     - DO NOT INCLUDE CODE
     - No astericks or any special characters
+    - SELECT ONE ITEM FROM EACH CATEGORY
     """    
 #    Format the response as: 
 #    "Top: ..., Bottom: ..., Shoes: ..., Accessories: ...", and ONLY include an "Outer Layer" if it is cold.
     
 
-    response = ollama.chat("smollm", messages=[{"role": "user", "content": prompt}])
+    response = ollama.chat("qwen:0.5b", messages=[{"role": "user", "content": prompt}])
 
     if "message" in response and "content" in response["message"]:
         return response["message"]["content"]

@@ -7,7 +7,7 @@ const weatherAdvice = document.getElementById('weather-advice');
 const cityInput = document.getElementById('cityInput');
 const getWeatherButton = document.getElementById('getWeatherButton');
 
-const apiKey = 'db7f2850668839e7ccc717db791b3a00'; // Replace with your OpenWeather API Key
+// const apiKey = 'db7f2850668839e7ccc717db791b3a00'; // Replace with your OpenWeather API Key
 
 getWeatherButton.addEventListener('click', () => {
     const city = cityInput.value.trim();
@@ -62,32 +62,49 @@ function saveCityToFile(city) {
 
 let usedTops = new Set();
 
-function displayForecast(forecastList) {
-    forecastElement.innerHTML = '';
-    weatherAdvice.innerHTML = '';
+// function displayForecast(forecastList) {
+//     forecastElement.innerHTML = '';
+//     weatherAdvice.innerHTML = '';
+//
+//     usedTops.clear();
+//
+//     for (let i = 0; i < 3; i++) {
+//         const forecast = forecastList[i * 8];
+//         if (!forecast) break;
+//
+//         const date = new Date(forecast.dt * 1000);
+//         const day = date.toLocaleDateString('en-US', { weekday: 'long' });
+//         const temp = forecast.main.temp;
+//         const conditions = forecast.weather[0].description;
+//         const iconCode = forecast.weather[0].icon;
+//
+//         const forecastDayDiv = document.createElement('div');
+//         forecastDayDiv.classList.add('forecast-day');
+//         forecastDayDiv.innerHTML = `
+//             <img src="http://openweathermap.org/img/w/${iconCode}.png" alt="Forecast Icon">
+//             <p>${day}: ${temp}°C - ${conditions}</p>
+//         `;
+//         forecastElement.appendChild(forecastDayDiv);
+//
+//         getOllamaClothingAdvice(temp, conditions, day);
+//     }
+// }
+//
+function getWeatherData(city) {
+    const apiUrl = `https://wttr.in/${city}?0`;  // `?0` gives the full weather report without extras
 
-    usedTops.clear();
+    fetch(apiUrl)
+        .then(response => response.text())
+        .then(data => {
+            // 🔥 Display the full ASCII weather report in a <pre> tag (preserves formatting)
+            document.getElementById("weather-report").innerHTML = `<pre>${data}</pre>`;
 
-    for (let i = 0; i < 3; i++) {
-        const forecast = forecastList[i * 8];
-        if (!forecast) break;
-
-        const date = new Date(forecast.dt * 1000);
-        const day = date.toLocaleDateString('en-US', { weekday: 'long' });
-        const temp = forecast.main.temp;
-        const conditions = forecast.weather[0].description;
-        const iconCode = forecast.weather[0].icon;
-
-        const forecastDayDiv = document.createElement('div');
-        forecastDayDiv.classList.add('forecast-day');
-        forecastDayDiv.innerHTML = `
-            <img src="http://openweathermap.org/img/w/${iconCode}.png" alt="Forecast Icon">
-            <p>${day}: ${temp}°C - ${conditions}</p>
-        `;
-        forecastElement.appendChild(forecastDayDiv);
-
-        getOllamaClothingAdvice(temp, conditions, day);
-    }
+            console.log(`Weather report fetched for ${city}`);
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            document.getElementById("weather-report").innerHTML = "<p>Error fetching weather data.</p>";
+        });
 }
 
 const userWardrobe = `Your JSON wardrobe data here`;

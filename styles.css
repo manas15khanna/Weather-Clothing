@@ -126,4 +126,16 @@ body {
         width: 100%;
     }
 }
+/* 🔥 Make sure ASCII weather report is readable */
+#weather-report pre {
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap; /* Preserve line breaks */
+    background: #5344A9;
+    color: #F5C63C;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    max-width: 100%;
+}
 

@@ -3,26 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>Weather & Outfit Suggestion</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <div class="weather-card">
+        <!-- 🔥 Left Side: City Input & Weather -->
+        <div class="weather-section">
             <label for="cityInput">Enter City:</label>
             <input type="text" id="cityInput" placeholder="Enter city name">
             <button id="getWeatherButton">Get Weather</button>
-            
+
             <h1 id="city">City Name</h1>
-            <p id="temperature">Temperature</p>
-            <p id="conditions">Conditions</p>
-            <img id="icon" src="" alt="Weather Icon">
-            
-            <div id="forecast"></div>
-            <div id="weather-advice"></div> <!-- AI Clothing Recommendations Here -->
+
+            <!-- 🔥 Full ASCII Weather Report -->
+            <div id="weather-report">
+                <pre>Loading weather...</pre>
+            </div>
+        </div>
+
+        <!-- 🔥 Right Side: Outfit Suggestion -->
+        <div class="outfit-section">
+            <h2>What to Wear</h2>
+            <div id="weather-advice">Loading outfit recommendation...</div>
         </div>
     </div>
 
     <script src="script.js"></script> 
 </body>
 </html>
+
