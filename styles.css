@@ -1,321 +1,100 @@
-/* General Styling */
+/* General Styles */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #A8E6CF, #DCEDC1);
+    color: #2E4A23;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Box */
+.input-box {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    /*background: linear-gradient(135deg, #279bb5, #2193b0);*/
-    background: rgb(39,68,93);
-    background: linear-gradient(0deg, rgba(113,187,178,1) 0%, rgba(73,125,116,1) 50%, rgba(39,68,93,1) 100%);
-    color: #333;
-    flex-direction: column;
+    margin-bottom: 15px;
 }
 
-/* Main Container */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 6000px;
-    margin-top: 20px;
-}
-
-/* Weather Card */
-.weather-card {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    width: 100%;
-    transition: all 0.3s ease-in-out;
-    margin-bottom:20px;
-}
-
-.weather-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Weather Icon */
-#icon {
-    width: 120px;
-    height: 120px;
-    margin-top: 10px;
-}
-
-/* Forecast Section */
-#forecast {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-}
-
-.forecast-day {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 12px;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.05);
-}
-
-.forecast-day img {
-    width: 50px;
-    height: 50px;
-}
-
-/* Input Field */
-#cityInput {
+.input-box input {
+    width: 70%;
     padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    width: calc(100% - 120px);
+    border: 2px solid #558B2F;
+    border-radius: 5px;
     font-size: 16px;
-    outline: none;
-    transition: 0.3s;
 }
 
-#cityInput:focus {
-    border-color: #4CAF50;
-}
-
-/* Get Weather Button 
-#getWeatherButton {
-    padding: 10px 16px;
-    background: linear-gradient(135deg, #4CAF50, #45a049);
+.input-box button {
+    background: #558B2F;
     color: white;
+    padding: 10px;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+    border-radius: 5px;
+    margin-left: 10px;
 }
 
-#getWeatherButton:hover {
-    background: linear-gradient(135deg, #45a049, #388e3c);
+.input-box button:hover {
+    background: #33691E;
 }
-*/
 
-/* Weather Advice Section */
-#weather-advice {
-    margin-top: 20px;
+/* Loading Bar */
+.loading-bar {
+    width: 0%;
+    height: 5px;
+    background: #8BC34A;
+    margin-top: 10px;
+    transition: width 1s ease-in-out;
+}
+
+/* Output Box */
+.output-box {
+    background: white;
     padding: 15px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    font-weight: bold;
-    transition: 0.3s;
+    margin-top: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* From Uiverse.io by gharsh11032000 */ 
-.form-container {
-  max-width: 900px;
-  background-color: #fff;
-  padding: 32px 24px;
-  font-size: 14px;
-  font-family: inherit;
-  color: #212121;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
-}
-
-.form-container button:active {
-  scale: 0.95;
-}
-
-.form-container .logo-container {
-  text-align: center;
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.form-container .form {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-container .form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.form-container .form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.form-container .form-group input {
-  width: 800px;
-  padding: 12px 16px;
-  border-radius: 6px;
-  font-family: inherit;
-  border: 1px solid #ccc;
-}
-
-.form-container .form-group input::placeholder {
-  opacity: 0.5;
-}
-
-.form-container .form-group input:focus {
-  outline: none;
-  border-color: #1778f2;
-}
-
-.form-container .form-submit-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: inherit;
-  color: #fff;
-  background-color: #212121;
-  border: none;
-  width: 800px;
-  padding: 12px 16px;
-  font-size: inherit;
-  gap: 8px;
-  margin: 12px 0;
-  cursor: pointer;
-  border-radius: 6px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
-}
-
-.form-container .form-submit-btn:hover {
-  background-color: #313131;
-}
-
-.form-container .link {
-  color: #1778f2;
-  text-decoration: none;
-}
-
-.form-container .signup-link {
-  align-self: center;
-  font-weight: 500;
-}
-
-.form-container .signup-link .link {
-  font-weight: 400;
-}
-
-.form-container .link:hover {
-  text-decoration: underline;
-}
-
-
-
-#weather-advice:hover {
-    background: rgba(255, 255, 255, 1);
-}
-
-/* Responsive Design */
-@media (max-width: 480px) {
-    .weather-card {
-        padding: 20px;
-    }
-
-    #cityInput {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    #getWeatherButton {
-        width: 100%;
-    }
-}
-/* 🔥 Make sure ASCII weather report is readable */
-#weather-report {
-    font-family: monospace;  /* Ensures ASCII art aligns properly */
-    font-size: 16px;         /* Increases text size */
-    white-space: pre-wrap;   /* Preserves ASCII formatting */
-    background: #282c34;     /* Dark theme for readability */
-    color: #FFD700;          /* Bright yellow text for contrast */
-    padding: 15px;           /* Adds padding inside the box */
-    border-radius: 8px;      /* Rounded corners */
-    overflow: auto;          /* Adds scroll if content overflows */
-    width: 800px;            /* ✅ Increases width to fit ASCII art */
-    height: 600px;           /* ✅ Increases height to fit ASCII art */
-    border: 2px solid #fff;  /* Adds a border for visibility */
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Soft shadow effect */
-    text-align: left;        /* Aligns text properly */
-}
-
-/* From Uiverse.io by aryamitra06 */ 
-.loader {
-  display: flex;
-  align-items: center;
-}
-
-.bar {
-  display: inline-block;
-  width: 3px;
-  height: 20px;
-  background-color: rgba(255, 255, 255, .5);
-  border-radius: 10px;
-  animation: scale-up4 1s linear infinite;
-}
-
-.bar:nth-child(2) {
-  height: 35px;
-  margin: 0 5px;
-  animation-delay: .25s;
-}
-
-.bar:nth-child(3) {
-  animation-delay: .5s;
-}
-
-@keyframes scale-up4 {
-  20% {
-    background-color: #ffff;
-    transform: scaleY(1.5);
-  }
-
-  40% {
-    transform: scaleY(1);
-  }
-}
-.card {
-    font-family: Montserrat, sans-serif;
-    width: 900px;  /* ✅ Increases overall width */
-    height: 700px; /* ✅ Increases height to fit ASCII */
-    background: #5344A9;
-    border: 3px solid #000000;
-    box-shadow: 12px 12px 0 #000000;
-    overflow: hidden;
-    transition: all 0.3s ease;
+/* Large Output Box */
+.large-box {
+    height: 150px;
+    font-size: 18px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-/* 🔥 Weather Report Header */
-.head {
-    font-size: 18px;
-    font-weight: 900;
-    width: 100%;
-    height: 50px;
-    background: #ffffff;
-    padding: 10px 12px;
-    color: #000000;
-    border-bottom: 3px solid #000000;
-    text-align: center;
-}
-.content {
-  padding: 8px 12px;
-  font-size: 14px;
-  font-weight: 600;
+
+.outfit {
+    background: #f5f5f5;  /* Light grey box */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
-.card:hover {
-  translate: -6px;
+.outfit h2 {
+    color: #333;
+    text-align: center;
 }
+
+.outfit pre {
+    white-space: pre-wrap; /* Ensures text wraps properly */
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+    color: #444;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+

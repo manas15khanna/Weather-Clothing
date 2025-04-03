@@ -1,4 +1,0 @@
-FROM smollm
-PARAMETER temp 0.7
-INCLUDE my_outfits.json
-

@@ -3,55 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather & Outfit Suggestion</title>
+    <title>Weather & Outfit</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <br>
-  <br>
-<!-- 🔥 City Input Section -->
-<div class="form-container">
-    <div class="logo-container">
-        Enter The City
+    <div class="container">
+        <header>
+            <h1>Weather & Outfit Recommender</h1>
+        </header>
+        
+        <main>
+            <section class="search">
+                <form id="cityForm">
+                    <input type="text" id="cityInput" placeholder="Enter City">
+                    <button type="submit">Get Weather & Outfit</button>
+                </form>
+            </section>
+
+            <section class="weather">
+                <h2>Weather Report</h2>
+                <pre id="weather-report">Loading...</pre>
+            </section>
+
+            <section class="outfit">
+                <h2>Clothing Recommendation</h2>
+                <pre id="outfit-report">Loading...</pre>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Powered by wttr.in & Gemini</p>
+        </footer>
     </div>
 
-    <form class="form" id="cityForm">
-        <div class="form-group">
-            <label for="cityInput">Location</label>
-            <input type="text" id="cityInput" placeholder="Enter the City" required>
-        </div>
-        <button id="getWeatherButton" class="form-submit-btn" type="submit">Select City</button>
-    </form>
-</div>
-
-<!-- 🔥 Weather Display -->
-<br>
-<div class="card">
-    <div class="head">Weather</div>
-    <div class="content">
-        <div id="weather-report">
-            <pre>Loading weather...</pre>
-        </div>
-    </div>
-</div>
-
-<!-- 🔥 Loader (Optional) -->
-<br><br>
-<div class="loader">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-</div>
-
-<!-- 🔥 Outfit Suggestion Section -->
-<div class="container">
-    <div class="outfit-section">
-        <h2>What to Wear</h2>
-        <div id="weather-advice">Loading outfit recommendation...</div>
-    </div>
-</div>
-
-<script src="script.js"></script> 
+    <script src="script.js"></script>
 </body>
 </html>
 

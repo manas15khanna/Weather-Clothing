@@ -1,56 +1,38 @@
-// 🔥 Function to Save City Name to `city.txt` via PHP
-function saveCityToFile(city) {
-    fetch("save_city.php", {
+// Function to Save City & Run Backend
+function getWeatherAndOutfit(city) {
+    fetch("run_wardrobe.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ city: city })
     })
-    .then(() => console.log("City saved successfully."))
-    .catch(error => console.error("Error saving city:", error));
+    .then(response => response.text())
+    .then(() => {
+        console.log("Weather & Outfit script executed.");
+        setTimeout(loadReport, 3000);  // Wait for processing, then load results
+    })
+    .catch(error => console.error("Error:", error));
 }
 
-// 🔥 Function to Run `weather.py` via `run_weather.php`
-function runWeatherPython() {
-    fetch("run_weather.php") // Calls PHP script to execute `weather.py`
-        .then(() => console.log("Weather script executed successfully."))
-        .catch(error => console.error("Error running weather script:", error));
+// Function to Load Weather & Outfit Report
+function loadReport() {
+    fetch("outfit.txt?" + new Date().getTime())  // Prevent cache issues
+    .then(response => response.text())
+    .then(data => {
+        const sections = data.split("\n\n"); // Split weather and outfit
+        document.getElementById("weather-report").innerText = sections[0] || "No data.";
+        
+        // Preserve line breaks for the outfit text
+        const outfitBox = document.getElementById("outfit-report");
+        outfitBox.innerHTML = sections[1] ? sections[1].replace(/\n/g, "<br>") : "No outfit suggestion.";
+    })
+    .catch(error => console.error("Error loading report:", error));
 }
 
-// 🔥 Function to Read Weather from `weather.txt` and Display It
-function loadWeatherReport() {
-    fetch("weather.txt?" + new Date().getTime()) // Prevents cache issues
-        .then(response => response.text())
-        .then(data => {
-            const weatherReportElement = document.getElementById("weather-report");
-            if (!weatherReportElement) {
-                console.error("Error: #weather-report element not found.");
-                return;
-            }
-
-            // 🔥 Display the weather inside a <pre> tag for proper formatting
-            weatherReportElement.innerHTML = `<pre>${data}</pre>`;
-        })
-        .catch(error => {
-            console.error("Error loading weather report:", error);
-            document.getElementById("weather-report").innerHTML = "<p>Error fetching weather report.</p>";
-        });
-}
-
-// 🔥 Event Listener for the City Input Form
+// Handle Form Submission
 document.getElementById("cityForm").addEventListener("submit", (event) => {
-    event.preventDefault();  // 🔥 Prevents form from reloading the page
-
+    event.preventDefault();
     const city = document.getElementById("cityInput").value.trim();
-    if (city !== "") {
-        saveCityToFile(city);  // 🔥 Save city to `city.txt`
-        runWeatherPython();    // 🔥 Run Python script to update weather
-        setTimeout(loadWeatherReport, 3000); // 🔄 Wait 3 seconds, then load weather
-    } else {
-        alert("Please enter a city name.");
-    }
+    if (city) getWeatherAndOutfit(city);
+    else alert("Please enter a city.");
 });
-
-// 🔄 Refresh the Weather Report Every 10 Seconds
-setInterval(loadWeatherReport, 10000);
-
 
